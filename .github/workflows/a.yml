@@ -162,13 +162,13 @@ jobs:
             for ((i=1;i<=files;i++)); do
 
               # اسم فایل 50 تا 57 کاراکتر
-              len=$((RANDOM % 8 + 50))
+              len=$((RANDOM % 13 + 45))
               name=$(printf "%s" "$(openssl rand -hex 64)" | cut -c1-$len)
 
               file="$dir/$name"
 
               # تعداد خطوط 50 تا 57
-              lines=$((RANDOM % 8 + 50))
+              lines=$((RANDOM % 8 + 10))
 
               for ((j=1;j<=lines;j++)); do
                 printf "%s %s %s %s %05d\n" \

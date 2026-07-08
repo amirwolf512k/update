@@ -156,15 +156,22 @@ jobs:
 
           for dir in "${dirs[@]}"; do
             mkdir -p "$dir"
-            len=$((RANDOM % 8 + 50))
-            name=$(tr -dc 'a-z0-9' </dev/urandom | head -c "$len")
-            file="$dir/$name"
-            lines=$((RANDOM % 8 + 50)) > "$file"
+
+            files=$((RANDOM % 2 + 4))  # 4 یا 5 فایل
+
             for ((i=1;i<=files;i++)); do
-              file="$dir/$(openssl rand -hex 6)"
-              lines=$((RANDOM % 8 + 50)) # 50-57 lines
+
+              # ساخت اسم فایل 50 تا 57 کاراکتر
+              len=$((RANDOM % 8 + 50))
+              name=$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w "$len" | head -n 1)
+
+              file="$dir/$name"
+
+              # تعداد خطوط فایل 50 تا 57
+              lines=$((RANDOM % 8 + 50))
 
               > "$file"
+
               for ((j=1;j<=lines;j++)); do
                 printf "%s %s %s %s %05d\n" \
                   "${words[$RANDOM % ${#words[@]}]}" \
@@ -173,6 +180,7 @@ jobs:
                   "${words[$RANDOM % ${#words[@]}]}" \
                   "$RANDOM" >> "$file"
               done
+
             done
           done
       - name: Commit and Push Changes

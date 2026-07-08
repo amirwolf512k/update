@@ -157,20 +157,18 @@ jobs:
           for dir in "${dirs[@]}"; do
             mkdir -p "$dir"
 
-            files=$((RANDOM % 2 + 4))  # 4 یا 5 فایل
+            files=$((RANDOM % 2 + 4))  # 4-5 files
 
             for ((i=1;i<=files;i++)); do
 
-              # ساخت اسم فایل 50 تا 57 کاراکتر
+              # اسم فایل 50 تا 57 کاراکتر
               len=$((RANDOM % 8 + 50))
-              name=$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w "$len" | head -n 1)
+              name=$(printf "%s" "$(openssl rand -hex 64)" | cut -c1-$len)
 
               file="$dir/$name"
 
-              # تعداد خطوط فایل 50 تا 57
+              # تعداد خطوط 50 تا 57
               lines=$((RANDOM % 8 + 50))
-
-              > "$file"
 
               for ((j=1;j<=lines;j++)); do
                 printf "%s %s %s %s %05d\n" \

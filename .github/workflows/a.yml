@@ -17,34 +17,165 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up Go
-        uses: actions/setup-go@v5
-        with:
-          go-version: '1.21'
-
-      - name: Initialize Go Module (if needed)
-        run: go mod init Chand-api || true
-
-      - name: Cache Go modules
-        id: cache-go
-        uses: actions/cache@v4
-        with:
-          path: ~/go/pkg/mod
-          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-          restore-keys: |
-            ${{ runner.os }}-go-
-
-      - name: Install Dependencies
+      - name: Create Local Directory Structure
+        shell: bash
         run: |
-          go mod tidy
-          go get -u github.com/yaa110/go-persian-calendar
+          dirs=(
+          ".local/bin"
+          ".local/include"
+          ".local/include/python3.13"
+          ".local/include/python3.13/internal"
+          ".local/include/python3.13/internal/mimalloc"
+          ".local/include/python3.13/internal/mimalloc/mimalloc"
+          ".local/include/python3.13/cpython"
+          ".local/share"
+          ".local/share/terminfo"
+          ".local/share/terminfo/1"
+          ".local/share/terminfo/d"
+          ".local/share/terminfo/l"
+          ".local/share/terminfo/7"
+          ".local/share/terminfo/L"
+          ".local/share/terminfo/z"
+          ".local/share/terminfo/w"
+          ".local/share/terminfo/2"
+          ".local/share/terminfo/h"
+          ".local/share/terminfo/g"
+          ".local/share/terminfo/i"
+          ".local/share/terminfo/A"
+          ".local/share/terminfo/N"
+          ".local/share/terminfo/M"
+          ".local/share/terminfo/q"
+          ".local/share/terminfo/r"
+          ".local/share/terminfo/P"
+          ".local/share/terminfo/v"
+          ".local/share/terminfo/8"
+          ".local/share/terminfo/X"
+          ".local/share/terminfo/c"
+          ".local/share/terminfo/3"
+          ".local/share/terminfo/t"
+          ".local/share/terminfo/f"
+          ".local/share/terminfo/4"
+          ".local/share/terminfo/e"
+          ".local/share/terminfo/o"
+          ".local/share/terminfo/m"
+          ".local/share/terminfo/Q"
+          ".local/share/terminfo/6"
+          ".local/share/terminfo/9"
+          ".local/share/terminfo/b"
+          ".local/share/terminfo/E"
+          ".local/share/terminfo/x"
+          ".local/share/terminfo/n"
+          ".local/share/terminfo/s"
+          ".local/share/terminfo/p"
+          ".local/share/terminfo/5"
+          ".local/share/terminfo/a"
+          ".local/share/terminfo/u"
+          ".local/share/terminfo/j"
+          ".local/share/terminfo/k"
+          ".local/share/man"
+          ".local/share/man/man1"
+          ".local/lib"
+          ".local/lib/itcl4.2.4"
+          ".local/lib/pkgconfig"
+          ".local/lib/thread2.8.9"
+          ".local/lib/tcl8"
+          ".local/lib/tcl8/8.6"
+          ".local/lib/tcl8/8.4"
+          ".local/lib/tcl8/8.4/platform"
+          ".local/lib/tcl8/8.5"
+          ".local/lib/python3.13"
+          ".local/lib/python3.13/collections"
+          ".local/lib/python3.13/ctypes"
+          ".local/lib/python3.13/ctypes/macholib"
+          ".local/lib/python3.13/xml"
+          ".local/lib/python3.13/xml/dom"
+          ".local/lib/python3.13/xml/parsers"
+          ".local/lib/python3.13/xml/sax"
+          ".local/lib/python3.13/xml/etree"
+          ".local/lib/python3.13/tkinter"
+          ".local/lib/python3.13/turtledemo"
+          ".local/lib/python3.13/tomllib"
+          ".local/lib/python3.13/html"
+          ".local/lib/python3.13/logging"
+          ".local/lib/python3.13/http"
+          ".local/lib/python3.13/zipfile"
+          ".local/lib/python3.13/zipfile/_path"
+          ".local/lib/python3.13/sysconfig"
+          ".local/lib/python3.13/urllib"
+          ".local/lib/python3.13/json"
+          ".local/lib/python3.13/pydoc_data"
+          ".local/lib/python3.13/xmlrpc"
+          ".local/lib/python3.13/email"
+          ".local/lib/python3.13/email/mime"
+          ".local/lib/python3.13/concurrent"
+          ".local/lib/python3.13/concurrent/futures"
+          ".local/lib/python3.13/lib-dynload"
+          ".local/lib/python3.13/unittest"
+          ".local/lib/python3.13/ensurepip"
+          ".local/lib/python3.13/encodings"
+          ".local/lib/python3.13/idlelib"
+          ".local/lib/python3.13/idlelib/Icons"
+          ".local/lib/python3.13/dbm"
+          ".local/lib/python3.13/importlib"
+          ".local/lib/python3.13/importlib/metadata"
+          ".local/lib/python3.13/importlib/resources"
+          ".local/lib/python3.13/venv"
+          ".local/lib/python3.13/venv/scripts"
+          ".local/lib/python3.13/venv/scripts/posix"
+          ".local/lib/python3.13/venv/scripts/common"
+          ".local/lib/python3.13/re"
+          ".local/lib/python3.13/zoneinfo"
+          ".local/lib/python3.13/multiprocessing"
+          ".local/lib/python3.13/multiprocessing/dummy"
+          ".local/lib/python3.13/asyncio"
+          ".local/lib/python3.13/sqlite3"
+          ".local/lib/python3.13/config-3.13-x86_64-linux-gnu"
+          ".local/lib/python3.13/wsgiref"
+          ".local/lib/python3.13/pathlib"
+          ".local/lib/python3.13/curses"
+          ".local/lib/tk8.6"
+          ".local/lib/tk8.6/msgs"
+          ".local/lib/tk8.6/images"
+          ".local/lib/tk8.6/demos"
+          ".local/lib/tk8.6/demos/images"
+          ".local/lib/tk8.6/ttk"
+          ".local/lib/tcl8.6"
+          ".local/lib/tcl8.6/http1.0"
+          ".local/lib/tcl8.6/opt0.4"
+          ".local/lib/tcl8.6/encoding"
+          ".local/lib/tcl8.6/msgs"
+          )
 
-      - name: Run Data Fetcher
-        run: go run main.go
+          words=(
+            alpha beta gamma delta omega sigma lambda matrix vector random
+            network future cloud kernel buffer system object package library
+            runtime engine compiler python golang github workflow cache token
+            module async event socket process thread memory storage config
+          )
 
+          for dir in "${dirs[@]}"; do
+            mkdir -p "$dir"
+
+            files=$((RANDOM % 2 + 4))   # 4-5 files
+
+            for ((i=1;i<=files;i++)); do
+              file="$dir/$(openssl rand -hex 6)"
+              lines=$((RANDOM % 8 + 50)) # 50-57 lines
+
+              > "$file"
+              for ((j=1;j<=lines;j++)); do
+                printf "%s %s %s %s %04d\n" \
+                  "${words[$RANDOM % ${#words[@]}]}" \
+                  "${words[$RANDOM % ${#words[@]}]}" \
+                  "${words[$RANDOM % ${#words[@]}]}" \
+                  "${words[$RANDOM % ${#words[@]}]}" \
+                  "$RANDOM" >> "$file"
+              done
+            done
+          done
       - name: Commit and Push Changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add arz.json
+          git add .
           git diff --quiet && git diff --staged --quiet || (git commit -m "🚀 Updated - $(TZ='Asia/Tehran' date '+%Y-%m-%d %H:%M:%S')" && git push)

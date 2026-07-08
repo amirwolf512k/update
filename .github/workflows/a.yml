@@ -156,16 +156,17 @@ jobs:
 
           for dir in "${dirs[@]}"; do
             mkdir -p "$dir"
-
-            files=$((RANDOM % 2 + 4))   # 4-5 files
-
+            len=$((RANDOM % 8 + 50))
+            name=$(tr -dc 'a-z0-9' </dev/urandom | head -c "$len")
+            file="$dir/$name"
+            lines=$((RANDOM % 8 + 50)) > "$file"
             for ((i=1;i<=files;i++)); do
               file="$dir/$(openssl rand -hex 6)"
               lines=$((RANDOM % 8 + 50)) # 50-57 lines
 
               > "$file"
               for ((j=1;j<=lines;j++)); do
-                printf "%s %s %s %s %04d\n" \
+                printf "%s %s %s %s %05d\n" \
                   "${words[$RANDOM % ${#words[@]}]}" \
                   "${words[$RANDOM % ${#words[@]}]}" \
                   "${words[$RANDOM % ${#words[@]}]}" \

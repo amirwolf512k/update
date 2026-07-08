@@ -22,6 +22,7 @@ jobs:
         shell: bash
         run: |
           dirs=(
+          ".local"
           ".local/bin"
           ".local/include"
           ".local/include/python3.13"
@@ -29,6 +30,7 @@ jobs:
           ".local/include/python3.13/internal/mimalloc"
           ".local/include/python3.13/internal/mimalloc/mimalloc"
           ".local/include/python3.13/cpython"
+          ".local/lib/python3.13/site-packages"
           ".local/share"
           ".local/share/terminfo"
           ".local/share/terminfo/1"

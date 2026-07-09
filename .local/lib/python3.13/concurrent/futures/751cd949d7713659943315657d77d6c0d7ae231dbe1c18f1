@@ -1,0 +1,12 @@
+config compiler omega process 05311
+library thread runtime random 02503
+sigma matrix process storage 04015
+runtime sigma process config 14352
+python sigma workflow matrix 00018
+object kernel process lambda 07349
+memory gamma package cache 10527
+storage random sigma socket 02435
+socket system network cloud 27277
+module golang system matrix 05143
+module cache thread matrix 21932
+workflow runtime random golang 24367

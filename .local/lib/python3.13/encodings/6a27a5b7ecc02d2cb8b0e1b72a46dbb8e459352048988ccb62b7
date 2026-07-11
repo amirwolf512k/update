@@ -1,0 +1,10 @@
+config sigma socket network 27889
+memory system event python 26207
+module process memory cache 17446
+token async module lambda 27513
+config storage random storage 21063
+token future process kernel 05661
+cloud network compiler lambda 17718
+async compiler delta storage 32153
+package token socket token 05759
+storage runtime future omega 12240

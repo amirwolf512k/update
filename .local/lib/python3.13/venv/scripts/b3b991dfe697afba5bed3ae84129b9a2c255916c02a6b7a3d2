@@ -1,0 +1,10 @@
+network thread sigma socket 21366
+sigma buffer matrix sigma 14697
+module object kernel sigma 18019
+process vector async storage 03744
+gamma package gamma memory 02857
+alpha config thread vector 00502
+token cache event vector 27825
+omega kernel system config 25201
+alpha gamma workflow socket 23311
+kernel engine network sigma 19386

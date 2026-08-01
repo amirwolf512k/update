@@ -1,0 +1,13 @@
+cloud config kernel sigma 32512
+compiler module storage random 20875
+process memory golang runtime 19650
+memory gamma vector golang 31851
+lambda library memory process 26986
+object compiler omega workflow 30082
+sigma storage gamma buffer 13462
+matrix python workflow compiler 30629
+process workflow compiler runtime 22548
+matrix vector system kernel 15025
+gamma compiler process runtime 11841
+compiler matrix alpha lambda 09413
+gamma vector python python 14051

@@ -1,0 +1,11 @@
+sigma token cloud cache 25969
+system future vector cache 16641
+sigma object storage cloud 16576
+module network random random 09834
+thread golang beta lambda 07480
+memory runtime library alpha 26513
+sigma beta socket module 32705
+storage object random runtime 25281
+compiler process socket compiler 19931
+thread lambda compiler lambda 19470
+network alpha object golang 06887

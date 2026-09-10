@@ -1,0 +1,10 @@
+socket system sigma network 22515
+system object library random 31966
+network kernel module matrix 13871
+memory kernel buffer buffer 11265
+matrix runtime event delta 17534
+vector package runtime thread 29632
+vector thread system module 18044
+cache config vector gamma 17523
+omega engine event matrix 19877
+workflow module matrix beta 06848

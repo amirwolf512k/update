@@ -1,0 +1,10 @@
+object sigma sigma workflow 00760
+config network sigma matrix 20943
+engine matrix compiler module 21386
+process config engine golang 24498
+memory module async matrix 05724
+vector workflow token vector 11392
+cache engine matrix golang 04600
+library process gamma engine 24029
+library config async token 25654
+thread random process future 21726

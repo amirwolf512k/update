@@ -1,0 +1,10 @@
+config cache module golang 19971
+kernel beta buffer cache 04584
+system alpha package system 07786
+runtime module runtime compiler 09913
+kernel memory alpha socket 20054
+vector alpha event delta 20685
+process package gamma vector 24469
+package process token beta 21681
+token buffer package omega 24540
+socket object gamma gamma 11953

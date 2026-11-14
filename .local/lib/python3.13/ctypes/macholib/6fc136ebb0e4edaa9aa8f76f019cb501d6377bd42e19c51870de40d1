@@ -1,0 +1,16 @@
+event memory process golang 18878
+library sigma random socket 21681
+module network event golang 12019
+config event event sigma 00349
+process cloud event event 06998
+python module runtime thread 15193
+event alpha network token 03929
+cloud kernel alpha cloud 21541
+process storage beta token 16634
+network matrix cache storage 11567
+module token buffer process 16218
+python kernel object workflow 09761
+process package lambda system 12743
+process future delta lambda 12134
+golang matrix delta socket 30467
+workflow golang random future 26192
